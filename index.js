@@ -34,7 +34,7 @@ class TopPlugin {
 
   help(hints) {
     return [
-      ['example', 'Monitor basic usage statistics for each collection.'],
+      ['top', 'Monitor basic usage statistics for each collection.'],
     ]
   }
 }
@@ -73,8 +73,8 @@ function plugin(client, options = {}) {
         clearInterval(intervalId);
         screen.remove(table);
         table.destroy();
-        screen.destroy();      
-        
+        screen.destroy();
+
         // Return control to the repl
         resolve();
       }
@@ -118,7 +118,7 @@ function plugin(client, options = {}) {
               }
 
               data.push([
-                name.length > 50 ? name.substring(0, 29) : name, 
+                name.length > 50 ? name.substring(0, 29) : name,
                 `${total}ms`,
                 `${read}ms`,
                 `${write}ms`,
@@ -128,12 +128,12 @@ function plugin(client, options = {}) {
           }
 
           // Set the data
-          table.setData({ 
+          table.setData({
             headers: ['ns', 'total', 'read', 'write'],
             data: data
           });
 
-          // Update the last result          
+          // Update the last result
           lastResult = result;
           // Render the table
           screen.render();
